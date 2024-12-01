@@ -1,11 +1,19 @@
-import canvasSketch from "canvas-sketch";
+const canvasSketch = require("canvas-sketch");
 
 const settings = {
   dimensions: [1080, 1080],
 };
 
+interface Props {
+  context: CanvasRenderingContext2D;
+  width: number;
+  height: number;
+  time: number;
+  playhead: number;
+}
+
 const sketch = () => {
-  return ({ context, width, height }) => {
+  return ({ context, width, height }: Props) => {
     context.fillStyle = "white";
     context.fillRect(0, 0, width, height);
     context.lineWidth = width * 0.01;
@@ -18,7 +26,7 @@ const sketch = () => {
     const iy = height * 0.17;
     const off = width * 0.02;
 
-    let x, y;
+    let x: number, y: number;
 
     for (let i = 0; i < 5; i++) {
       for (let j = 0; j < 5; j++) {
